@@ -10,7 +10,7 @@ public class Beautifier {
         this.formatter = formatter;
     }
 
-    public String beautifulize(final String sql) {
+    public String beautify(final String sql) {
         return formatter.format(sql);
     }
 }

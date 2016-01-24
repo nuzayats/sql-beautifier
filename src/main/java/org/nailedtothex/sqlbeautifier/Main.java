@@ -21,9 +21,9 @@ public class Main {
             return;
         }
 
-        final Beautifulier beautifulier = createBeautifulier(commandLine);
+        final Beautifier beautifulier = createBeautifulier(commandLine);
         final String sql = grabSQL(commandLine);
-        System.out.println(beautifulier.beautifulize(sql));
+        System.out.println(beautifulier.beautify(sql));
     }
 
     private static String grabSQL(final MyCommandLine commandLine) throws IOException {
@@ -33,8 +33,8 @@ public class Main {
         return FileUtils.readFileToString(new File(commandLine.getSourcePath()), Charset.defaultCharset());
     }
 
-    private static Beautifulier createBeautifulier(final MyCommandLine commandLine) {
-        final BeautifulierFactory factory = new BeautifulierFactory();
+    private static Beautifier createBeautifulier(final MyCommandLine commandLine) {
+        final BeautifierFactory factory = new BeautifierFactory();
         if (commandLine.isUseDDLFormatter()) {
             return factory.createDDLBeautifulier();
         }
