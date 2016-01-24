@@ -1,4 +1,4 @@
-package org.nailedtothex.sqlbeautifulier;
+package org.nailedtothex.sqlbeautifier;
 
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.DefaultParser;

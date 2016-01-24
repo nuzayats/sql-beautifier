@@ -1,4 +1,4 @@
-package org.nailedtothex.sqlbeautifulier;
+package org.nailedtothex.sqlbeautifier;
 
 public class MyCommandLine {
 

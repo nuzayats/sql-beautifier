@@ -1,12 +1,12 @@
-package org.nailedtothex.sqlbeautifulier;
+package org.nailedtothex.sqlbeautifier;
 
 import org.hibernate.engine.jdbc.internal.Formatter;
 
-public class Beautifulier {
+public class Beautifier {
 
     private final Formatter formatter;
 
-    public Beautifulier(final Formatter formatter) {
+    public Beautifier(final Formatter formatter) {
         this.formatter = formatter;
     }
 
