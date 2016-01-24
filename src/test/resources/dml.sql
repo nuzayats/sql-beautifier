@@ -1,0 +1,1 @@
+SELECT t0.content AS a2, t0.contenttype AS a3, t0.email AS a4 FROM roller_comment t0, weblogentry t1 WHERE ((t1.websiteid = 'f0588427-f2ca-4843-ac87-bbb31aa6013c') AND (t1.id = t0.entryid)) ORDER BY t0.posttime DESC LIMIT 31 OFFSET 0;
