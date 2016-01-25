@@ -21,7 +21,7 @@ public class Main {
             return;
         }
 
-        final Beautifier beautifier = createBeautifulier(commandLine);
+        final Beautifier beautifier = createBeautifier(commandLine);
         final String sql = grabSQL(commandLine);
         System.out.println(beautifier.beautify(sql));
     }
@@ -33,11 +33,11 @@ public class Main {
         return FileUtils.readFileToString(new File(commandLine.getSourcePath()), Charset.defaultCharset());
     }
 
-    private static Beautifier createBeautifulier(final MyCommandLine commandLine) {
+    private static Beautifier createBeautifier(final MyCommandLine commandLine) {
         final BeautifierFactory factory = new BeautifierFactory();
         if (commandLine.isUseDDLFormatter()) {
-            return factory.createDDLBeautifulier();
+            return factory.createDDLBeautifier();
         }
-        return factory.createDMLBeautifulier();
+        return factory.createDMLBeautifier();
     }
 }
