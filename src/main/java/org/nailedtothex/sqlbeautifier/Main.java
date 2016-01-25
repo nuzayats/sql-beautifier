@@ -17,13 +17,13 @@ public class Main {
         try {
             commandLine = parser.parse(args);
         } catch (final ParseException e) {
-            new HelpFormatter().printHelp("java -jar sql-beautifulier.jar [OPTION]... [FILE]...", parser.getOptions());
+            new HelpFormatter().printHelp("java -jar sql-beautifier.jar [OPTION]... [FILE]...", parser.getOptions());
             return;
         }
 
-        final Beautifier beautifulier = createBeautifulier(commandLine);
+        final Beautifier beautifier = createBeautifulier(commandLine);
         final String sql = grabSQL(commandLine);
-        System.out.println(beautifulier.beautify(sql));
+        System.out.println(beautifier.beautify(sql));
     }
 
     private static String grabSQL(final MyCommandLine commandLine) throws IOException {
