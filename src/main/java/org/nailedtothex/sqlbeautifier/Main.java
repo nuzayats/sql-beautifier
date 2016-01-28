@@ -35,9 +35,14 @@ public class Main {
 
     private static Beautifier createBeautifier(final MyCommandLine commandLine) {
         final BeautifierFactory factory = new BeautifierFactory();
-        if (commandLine.isUseDDLFormatter()) {
-            return factory.createDDLBeautifier();
+        switch (commandLine.getMode()) {
+            case DML:
+                return factory.createDMLBeautifier();
+            case DDL:
+                return factory.createDDLBeautifier();
+            case JSON:
+                return factory.createJSONBeautifier();
         }
-        return factory.createDMLBeautifier();
+        throw new IllegalArgumentException(String.valueOf(commandLine.getMode()));
     }
 }

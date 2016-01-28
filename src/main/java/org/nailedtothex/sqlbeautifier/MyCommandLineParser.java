@@ -14,6 +14,7 @@ public class MyCommandLineParser {
     public MyCommandLineParser() {
         options = new Options();
         options.addOption("d", "use-ddl-formatter", false, "Use DDL formatter instead of basic formatter");
+        options.addOption("j", "use-json-formatter", false, "Use JSON formatter instead of basic formatter");
     }
 
     public Options getOptions() {
@@ -25,16 +26,26 @@ public class MyCommandLineParser {
         final List<String> argList = commandLine.getArgList();
 
         final boolean useStdin = argList.isEmpty();
-        final boolean useDDLFormatter = commandLine.hasOption("d");
+        final MyCommandLineMode mode = decideMode(commandLine);
 
         if (useStdin) {
-            return new MyCommandLine(useDDLFormatter);
+            return new MyCommandLine(mode);
         }
 
         if (argList.size() > 1) {
             throw new ParseException("Multiple file input is not supported");
         }
 
-        return new MyCommandLine(argList.get(0), useDDLFormatter);
+        return new MyCommandLine(argList.get(0), mode);
+    }
+
+    private MyCommandLineMode decideMode(final CommandLine commandLine) {
+        if (commandLine.hasOption("d")) {
+            return MyCommandLineMode.DDL;
+        }
+        if (commandLine.hasOption("j")) {
+            return MyCommandLineMode.JSON;
+        }
+        return MyCommandLineMode.DML;
     }
 }

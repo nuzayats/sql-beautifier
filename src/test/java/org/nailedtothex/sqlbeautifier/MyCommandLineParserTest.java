@@ -16,7 +16,7 @@ public class MyCommandLineParserTest {
         final MyCommandLine result = sut.parse(new String[0]);
 
         assertThat(result.getSourcePath(), is(nullValue()));
-        assertThat(result.isUseDDLFormatter(), is(false));
+        assertThat(result.getMode(), is(MyCommandLineMode.DML));
         assertThat(result.isUseStdin(), is(true));
     }
 
@@ -27,7 +27,7 @@ public class MyCommandLineParserTest {
         final MyCommandLine result = sut.parse(new String[]{input});
 
         assertThat(result.getSourcePath(), is(input));
-        assertThat(result.isUseDDLFormatter(), is(false));
+        assertThat(result.getMode(), is(MyCommandLineMode.DML));
         assertThat(result.isUseStdin(), is(false));
     }
 
@@ -36,7 +36,16 @@ public class MyCommandLineParserTest {
         final MyCommandLine result = sut.parse(new String[]{"-d"});
 
         assertThat(result.getSourcePath(), is(nullValue()));
-        assertThat(result.isUseDDLFormatter(), is(true));
+        assertThat(result.getMode(), is(MyCommandLineMode.DDL));
+        assertThat(result.isUseStdin(), is(true));
+    }
+
+    @Test
+    public void shouldUseJSONFormatterForOptionSupplied() throws Exception {
+        final MyCommandLine result = sut.parse(new String[]{"-j"});
+
+        assertThat(result.getSourcePath(), is(nullValue()));
+        assertThat(result.getMode(), is(MyCommandLineMode.JSON));
         assertThat(result.isUseStdin(), is(true));
     }
 
