@@ -1,0 +1,6 @@
+addClassPath("/Users/kohei/src/sql-beautifier/target/sql-beautifier.jar"); // replace path to suit your environment
+import org.nailedtothex.sqlbeautifier.BeautifierFactory;
+
+text = textArea.getSelectedText();
+beautified = new BeautifierFactory().createDMLBeautifier().beautify(text);
+textArea.setSelectedText(beautified);

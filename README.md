@@ -17,3 +17,7 @@ Inspired by http://stackoverflow.com/questions/312552/looking-for-an-embeddable-
 ## Notes
 
 This command can consume STDIN instead of a file. If you omit filename from arguments, It starts reading input from STDIN instead.
+
+## jEdit notes
+
+There are jEdit macros (*.bsh in this repo) that would be very useful.
