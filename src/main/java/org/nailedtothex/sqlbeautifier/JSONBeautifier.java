@@ -12,7 +12,7 @@ public class JSONBeautifier implements Beautifier {
      */
     @Override
     public String beautify(final String text) {
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        Gson gson = new GsonBuilder().serializeNulls().setPrettyPrinting().create();
         JsonParser jp = new JsonParser();
         JsonElement je = jp.parse(text);
         return gson.toJson(je);
